@@ -40,3 +40,15 @@ resource "aws_subnet" "public_2" {
     Name = "public-gallery-2"
   }
 }
+# Create Public Route Table for public subnets
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.dev_vpc.id
+
+  route {
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = {
+    Name = "Public_RT_Gallery"
+  }
+}
