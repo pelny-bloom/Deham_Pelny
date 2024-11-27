@@ -53,3 +53,11 @@ resource "aws_route_table" "public" {
     Name = "Public_RT_Gallery"
   }
 }
+
+#Create association with public subnet 1
+
+resource "aws_route_table_association" "Public_Subnet1_Asso" {
+  route_table_id = aws_route_table.public.id
+  subnet_id      = aws_subnet.public_1.id
+  depends_on     = [aws_route_table.public, aws_subnet.public_1]
+}
