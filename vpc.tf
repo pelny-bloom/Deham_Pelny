@@ -61,3 +61,11 @@ resource "aws_route_table_association" "Public_Subnet1_Asso" {
   subnet_id      = aws_subnet.public_1.id
   depends_on     = [aws_route_table.public, aws_subnet.public_1]
 }
+
+#Create association with public subnet 2
+
+resource "aws_route_table_association" "Public_Subnet2_Asso" {
+  route_table_id = aws_route_table.public.id
+  subnet_id      = aws_subnet.public_2.id
+  depends_on     = [aws_route_table.public, aws_subnet.public_2]
+}
