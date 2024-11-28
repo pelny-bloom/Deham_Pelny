@@ -1,5 +1,4 @@
 # Create an Application Load Balancer
-
 resource "aws_lb" "gallery_alb" {
   name               = "gallery-alb"
   internal           = false # Set to true if the ALB should be internal
@@ -41,8 +40,6 @@ resource "aws_lb_listener" "gallery_listener_2" {
   }
   
 }
-
-
 # Create the target group
 
 resource "aws_lb_target_group" "gallery-target-group" {
