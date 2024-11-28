@@ -1,10 +1,10 @@
 # configuration of autoscaling launch
-resource "aws_launch_configuration" "scaling_launch_config" {
-  image_id        = data.aws_ami.amazon_linux2.id
-  instance_type   = "t2.micro"
-  security_groups = ["${aws_security_group.gallery_sg.id}"]
-  key_name        = "vockey"
-}
+# resource "aws_launch_configuration" "scaling_launch_config" {
+#   image_id        = data.aws_ami.amazon_linux2.id
+#   instance_type   = "t2.micro"
+#   security_groups = ["${aws_security_group.gallery_sg.id}"]
+#   key_name        = "vockey"
+# }
 
 # configuration of the launch template 
 resource "aws_launch_template" "scaling_launch_template" {
@@ -29,7 +29,7 @@ lifecycle {
 resource  "aws_autoscaling_group" "gallery_autoscaling_group" {
   launch_template {
     id      = aws_launch_template.scaling_launch_template.id
-    version = aws_launch_template.scaling_launch_template.latest_version
+    #version = aws_launch_template.scaling_launch_template.latest_version
   }
   
 
