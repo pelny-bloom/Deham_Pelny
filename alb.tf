@@ -31,12 +31,12 @@ resource "aws_lb_listener" "gallery-listener_1" {
 
 # HTTPS Listener (Port 443)
 resource "aws_lb_listener" "gallery_listener_2" {
-  load_balancer_arn = aws_lb.my_alb.arn
+  load_balancer_arn = aws_lb.gallery_alb.arn
   port              = "443"
   protocol          = "HTTPS"
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.gallery_target_group.arn
+    target_group_arn = aws_lb_target_group.gallery-target-group.arn
   }
   
 }
@@ -57,7 +57,7 @@ resource "aws_lb_target_group" "gallery-target-group" {
 
 # Create the target group attachment
 resource "aws_lb_target_group_attachment" "gallery_target_group_attachment" {
-  target_group_arn = aws_lb_target_group.gallery_target_group.arn
+  target_group_arn = aws_lb_target_group.gallery-target-group.arn
   
   target_id        = aws_instance.gallery_instance.id
   port             = 80
