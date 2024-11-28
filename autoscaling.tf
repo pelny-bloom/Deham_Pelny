@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-west-2"
-}
-
 # configuration of autoscaling launch
 resource "aws_launch_configuration" "scaling_launch_config" {
   image_id        = data.aws_ami.amazon_linux2.id
