@@ -14,8 +14,7 @@ resource "aws_lb" "gallery_alb" {
 }
 
 # Creating two listeners for ports 80 and 443
-
-resource "aws_lb_listener" "gallery-listener_1" {
+resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.gallery_alb.arn
   port              = "80"
   protocol          = "HTTP"
@@ -30,7 +29,7 @@ resource "aws_lb_listener" "gallery-listener_1" {
 }
 
 # HTTPS Listener (Port 443)
-resource "aws_lb_listener" "gallery_listener_2" {
+resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.gallery_alb.arn
   port              = "443"
   protocol          = "HTTPS"
