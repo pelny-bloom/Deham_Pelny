@@ -73,7 +73,7 @@ resource "aws_route_table_association" "Public_Subnet2_Asso" {
 # Create Private Subnet 1
 resource "aws_subnet" "private_1" {
   vpc_id                  = aws_vpc.dev_vpc.id
-  cidr_block              = "10.0.0.64/26" 
+  cidr_block              = "10.0.1.0/25" 
   availability_zone       = "us-west-2a"
   map_public_ip_on_launch = true
 
@@ -85,7 +85,7 @@ resource "aws_subnet" "private_1" {
 # Create Private Subnet 2
 resource "aws_subnet" "private_2" {
   vpc_id                  = aws_vpc.dev_vpc.id
-  cidr_block              = "10.0.0.192/26" 
+  cidr_block              = "10.0.1.128/25" 
   availability_zone       = "us-west-2b"
   map_public_ip_on_launch = true
 
