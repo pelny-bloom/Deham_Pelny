@@ -1,7 +1,7 @@
 # Create an Application Load Balancer
 
 resource "aws_lb" "gallery_alb" {
-  name               = "gallery_alb"
+  name               = "gallery-alb"
   internal           = false # Set to true if the ALB should be internal
   load_balancer_type = "application"
   subnets            = [aws_subnet.public_1.id, aws_subnet.public_2.id] # Specify your public subnet(s) here
@@ -10,13 +10,13 @@ resource "aws_lb" "gallery_alb" {
   enable_deletion_protection = false # Set to true to prevent accidental deletion
 
   tags = {
-    Name = "gallery_alb"
+    Name = "gallery-alb"
   }
 }
 
 # Creating two listeners for ports 80 and 443
 
-resource "aws_lb_listener" "gallery_listener_1" {
+resource "aws_lb_listener" "gallery-listener_1" {
   load_balancer_arn = aws_lb.gallery_alb.arn
   port              = "80"
   protocol          = "HTTP"
@@ -45,8 +45,8 @@ resource "aws_lb_listener" "gallery_listener_2" {
 
 # Create the target group
 
-resource "aws_lb_target_group" "gallery_target_group" {
-  name        = "gallery_target_group"
+resource "aws_lb_target_group" "gallery-target-group" {
+  name        = "gallery-target-group"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.dev_vpc.id
@@ -54,7 +54,7 @@ resource "aws_lb_target_group" "gallery_target_group" {
 
   # Add tags
   tags = {
-    Name = "gallery_target_group"
+    Name = "gallery-target-group"
   }
 }
 
