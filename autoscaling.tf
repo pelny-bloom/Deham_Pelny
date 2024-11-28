@@ -52,8 +52,6 @@ resource  "aws_autoscaling_group" "gallery_autoscaling_group" {
     propagate_at_launch = true
   }
 }
-
-
 # Defining autoscaling policy
 resource "aws_autoscaling_policy" "autoscale_out" {
   name                   = "autoscale_out"
