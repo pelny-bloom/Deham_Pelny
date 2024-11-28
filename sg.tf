@@ -40,3 +40,6 @@ resource "aws_security_group" "gallery_sg" {
     Name = "gallery_sg"
   }
 }
+
+
+
