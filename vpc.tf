@@ -29,7 +29,7 @@ resource "aws_subnet" "public_1" {
   }
 }
 
-# Create Public Subnet 1
+# Create Public Subnet 2
 resource "aws_subnet" "public_2" {
   vpc_id                  = aws_vpc.dev_vpc.id
   cidr_block              = "10.0.0.128/25" 
@@ -69,3 +69,28 @@ resource "aws_route_table_association" "Public_Subnet2_Asso" {
   subnet_id      = aws_subnet.public_2.id
   depends_on     = [aws_route_table.public, aws_subnet.public_2]
 }
+
+# Create Private Subnet 1
+resource "aws_subnet" "private_1" {
+  vpc_id                  = aws_vpc.dev_vpc.id
+  cidr_block              = "10.0.0.0/26" 
+  availability_zone       = "us-west-2a"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "private-gallery-1"
+  }
+}
+
+# Create Private Subnet 2
+resource "aws_subnet" "private_2" {
+  vpc_id                  = aws_vpc.dev_vpc.id
+  cidr_block              = "10.0.0.64/26" 
+  availability_zone       = "us-west-2b"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "private-gallery-2"
+  }
+}
+
