@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-west-2"
+}
+
 # configuration of autoscaling launch
 resource "aws_launch_configuration" "scaling_launch_config" {
   image_id        = data.aws_ami.amazon_linux2.id
@@ -14,13 +18,22 @@ resource "aws_launch_template" "scaling_launch_template" {
   key_name               = "vockey"
   vpc_security_group_ids = [aws_security_group.gallery_sg.id]
   user_data              = base64encode(data.template_file.UserdataEC2.rendered)
-
+lifecycle {
+    create_before_destroy = true
+  }
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = "Gallery instance as"
+    }
+  }
+  }
 
 # Creating the autoscaling group
-resource "aws_autoscaling_group" "gallery_autoscaling_group" {
+resource  "aws_autoscaling_group" "gallery_autoscaling_group" {
   launch_template {
     id      = aws_launch_template.scaling_launch_template.id
-    version = "$Latest" #aws_launch_template.wordpress_launch_template.latest_version
+    version = aws_launch_template.scaling_launch_template.latest_version
   }
   
 
@@ -40,18 +53,6 @@ resource "aws_autoscaling_group" "gallery_autoscaling_group" {
   }
 }
 
-
-
-  lifecycle {
-    create_before_destroy = true
-  }
-  tag_specifications {
-    resource_type = "instance"
-    tags = {
-      Name = "Gallery instance as"
-    }
-  }
-}
 
 # Defining autoscaling policy
 resource "aws_autoscaling_policy" "autoscale_out" {
