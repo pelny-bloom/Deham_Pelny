@@ -25,10 +25,10 @@ resource "aws_instance" "gallery_instance" {
   tags = {
     Name = local.name
   }
-  #user_data = file("UserData.sh")
-  user_data = data.template_file.UserDataEC2.rendered
+  #user_data = file("UserDataEC2.sh")
+  user_data = data.template_file.userdataEC.rendered
 }
 
-data "template_file" "UserdataEC" {
+data "template_file" "UserdataEC2" {
   template = file("UserDataEC2.sh")
 } 
