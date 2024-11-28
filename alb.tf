@@ -66,7 +66,7 @@ resource "aws_lb_target_group_attachment" "gallery_target_group_attachment" {
 # Attach the ALB to the Auto Scaling Group
 resource "aws_autoscaling_attachment" "gallery_auto_alb_attachment" {
   autoscaling_group_name = aws_autoscaling_group.gallery_autoscaling_group.id
-  lb_target_group_arn   = aws_lb_target_group.gallery_target_group.arn
+  lb_target_group_arn   = aws_lb_target_group.gallery-target-group.arn
   
 }
 
