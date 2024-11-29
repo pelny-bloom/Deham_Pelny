@@ -14,7 +14,7 @@ resource "aws_db_instance" "mysqlgallery" {
   db_name                = "galleryDB"
   engine                 = "mysql"
   engine_version         = "8.0.39"
-  instance_class         = "db.t2.micro"
+  instance_class         = "db.t3.micro"
   identifier             = "rds-db"
   username               = "gallerist"
   password               = ")n1B6+6S49>"
