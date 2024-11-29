@@ -1,7 +1,7 @@
 #creating DB Subnet Group
 resource "aws_db_subnet_group" "private_group" {
   name       = "private-group"
-  subnet_ids = [aws_subnet.private_1, aws_subnet.private_2.id]
+  subnet_ids = [aws_subnet.private_1.id, aws_subnet.private_2.id]
 
   tags = {
     Name = "Private-Group"
