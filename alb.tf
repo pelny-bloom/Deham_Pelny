@@ -13,32 +13,20 @@ resource "aws_lb" "gallery_alb" {
   }
 }
 
-# Creating two listeners for ports 80 and 443
+#create listener for port 80
+
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.gallery_alb.arn
   port              = "80"
   protocol          = "HTTP"
- default_action {
-    type             = "forward"
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
 
-# HTTPS Listener (Port 443)
-resource "aws_lb_listener" "https" {
-  load_balancer_arn = aws_lb.gallery_alb.arn
-  port              = "443"
-  protocol          = "HTTPS"
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.gallery-target-group.arn
   }
-  
 }
+
+
 # Create the target group
 
 resource "aws_lb_target_group" "gallery-target-group" {
