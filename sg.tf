@@ -46,7 +46,7 @@ resource "aws_security_group" "rds_mysql" {
   name        = "rds_mysql_sg"
   description = "Security group for RDS database"
 
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = aws_vpc.dev_vpc.id
 
   ingress {
     from_port   = 3306
