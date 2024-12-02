@@ -12,8 +12,12 @@ sudo systemctl enable httpd
 sudo systemctl start httpd
 
 #Install mysql
-sudo yum install -y mysql
-
+sudo yum install -y php-mysqlnd
+#sudo apt-get install php-mysqli  # For Debian/Ubuntu
+#sudo yum install php-mysqli      # For CentOS/RHEL
+#php -i | grep "php.ini"
+#sudo systemctl restart apache2  # or httpd, depending on your system
+sudo systemctl start mysqld
 
 #Install PHP
 sudo yum install -y php 
