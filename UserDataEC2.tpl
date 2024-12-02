@@ -14,6 +14,7 @@ sudo systemctl start httpd
 #Install mysql
 sudo yum install -y mysql
 
+
 #Install PHP
 sudo yum install -y php 
 sudo amazon-linux-extras install
