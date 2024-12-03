@@ -11,23 +11,12 @@ sudo yum install httpd -y
 sudo systemctl enable httpd
 sudo systemctl start httpd
 
-#Install mysql
-sudo yum install -y php-mysqlnd
-#sudo apt-get install php-mysqli  # For Debian/Ubuntu
-#sudo yum install php-mysqli      # For CentOS/RHEL
-#php -i | grep "php.ini"
-#sudo systemctl restart apache2  # or httpd, depending on your system
-sudo systemctl start mysqld
 
-#Install PHP
-sudo yum install -y php 
-sudo amazon-linux-extras install
-sudo amazon-linux-extras enable php8.0
+#Install PHP & mysql
+sudo amazon-linux-extras install -y php8.0
+sudo amazon-linux-extras enable mariadb10.5
 sudo yum clean metadata
-sudo yum install php-cli php-pdo php-fpm php-mysqlnd php-json php-mbstring php-xml php-common
-
-# Update all installed 
-sudo yum update -y
+sudo yum install -y mariadb unzip
 
 #Restart Apache
 sudo systemctl restart httpd
