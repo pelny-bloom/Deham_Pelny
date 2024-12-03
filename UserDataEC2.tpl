@@ -18,6 +18,9 @@ sudo amazon-linux-extras enable mariadb10.5
 sudo yum clean metadata
 sudo yum install -y mariadb unzip
 
+sudo yum install mysql -y
+sudo yum install php-mysql -y
+
 #Restart Apache
 sudo systemctl restart httpd
 
