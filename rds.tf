@@ -9,6 +9,7 @@ resource "aws_db_subnet_group" "private_group" {
 }
 
 #create RDS database
+
 resource "aws_db_instance" "mysqlgallery" {
   allocated_storage      = "10"
   db_name                = "galleryDB"
