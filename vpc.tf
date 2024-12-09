@@ -42,7 +42,7 @@ resource "aws_subnet" "public_2" {
   }
 }
 # Create Public Route Table for public subnets
-resource "aws_route_table" "public" {
+resource "aws_route_table" "Public_RT_Gallery" {
   vpc_id = aws_vpc.dev_vpc.id
 
   route {

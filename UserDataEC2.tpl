@@ -40,10 +40,10 @@ DBRootPassword='rootpassword'
 mysqladmin -u root password $DBRootPassword
 
 # Retrieve RDS endpoint from Terraform output
-DBName= "galleryDB"
-DBUser= "gallerist"
-DBPassword= ")n1B6+6S49>"
-RDS_ENDPOINT= data.aws_db_instance.mysql_data.endpoint
+DBName="galleryDB"
+DBUser="gallerist"
+DBPassword=")n1B6+6S49>"
+RDS_ENDPOINT=data.aws_db_instance.mysql_data.endpoint
 
 # Create a temporary file to store the database value
 sudo touch db.txt
