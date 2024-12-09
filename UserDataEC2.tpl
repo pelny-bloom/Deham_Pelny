@@ -3,6 +3,9 @@
 #update the system
 sudo yum update -y
 
+# Install jq for JSON parsing
+sudo yum install -y jq
+
 # Configure AWS CLI with IAM role credentials
 aws configure set default.region us-west-2
 
@@ -39,11 +42,12 @@ sudo rm latest.tar.gz
 DBRootPassword='rootpassword'
 mysqladmin -u root password $DBRootPassword
 
-# Retrieve RDS endpoint from Terraform output
-DBName= "galleryDB"
-DBUser= "gallerist"
-DBPassword= ")n1B6+6S49>"
-RDS_ENDPOINT= data.aws_db_instance.mysql_data.endpoint
+# Retrieve RDS details from Secrets Manager
+SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id rds-secret --query SecretString --output text)
+DBName=$(echo $SECRET_VALUE | jq -r .db_name)
+DBUser=$(echo $SECRET_VALUE | jq -r .username)
+DBPassword=$(echo $SECRET_VALUE | jq -r .password)
+RDS_ENDPOINT=$(echo $SECRET_VALUE | jq -r .endpoint)
 
 # Create a temporary file to store the database value
 sudo touch db.txt
