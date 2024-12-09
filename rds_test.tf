@@ -37,7 +37,7 @@ resource "aws_db_instance" "mysqlgallery" {
   password               = data.aws_secretsmanager_secret_version.rds_secret_version.secret_string
   skip_final_snapshot    = true
   multi_az               = false
-  storage_encrypted      = false
+  #storage_encrypted      = false
   vpc_security_group_ids = [aws_security_group.rds_mysql.id]
   db_subnet_group_name   = aws_db_subnet_group.private_group.name #Associate private subnet to db instance
 
