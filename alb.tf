@@ -14,7 +14,6 @@ resource "aws_lb" "gallery_alb" {
 }
 
 #create listener for port 80
-
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.gallery_alb.arn
   port              = "80"
@@ -28,7 +27,6 @@ resource "aws_lb_listener" "http" {
 
 
 # Create the target group
-
 resource "aws_lb_target_group" "gallery-target-group" {
   name        = "gallery-target-group"
   port        = 80
