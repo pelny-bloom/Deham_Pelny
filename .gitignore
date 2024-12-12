@@ -1,0 +1,27 @@
+
+# Other gitignore
+.vscode
+*.exe
+bin
+obj
+.DS_Store
+#https://github.com/github/gitignore
+test
+*.db
+.env
+*.pem
+*.yml
+
+#--Start Terraform gitignore from github repo :
+# Local .terraform directories
+**/.terraform/*
+.terraform
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+*.log
