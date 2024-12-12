@@ -51,3 +51,26 @@ resource "aws_network_acl_rule" "allow_all_outbound" {
   to_port        = 0
 }
 
+# Allow inbound traffic on ephemeral ports
+resource "aws_network_acl_rule" "allow_ephemeral_inbound" {
+  network_acl_id = aws_network_acl.main.id
+  rule_number    = 130
+  egress         = false
+  protocol       = "tcp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  from_port      = 1024
+  to_port        = 65535
+}
+
+# Allow inbound ICMP (ping)
+resource "aws_network_acl_rule" "allow_icmp_inbound" {
+  network_acl_id = aws_network_acl.main.id
+  rule_number    = 140
+  egress         = false
+  protocol       = "icmp"
+  rule_action    = "allow"
+  cidr_block     = "0.0.0.0/0"
+  icmp_type      = -1
+  icmp_code      = -1
+}
