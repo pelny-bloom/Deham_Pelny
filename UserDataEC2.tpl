@@ -6,6 +6,8 @@ sudo yum update -y
 # Configure AWS CLI with IAM role credentials
 aws configure set default.region us-west-2
 
+sudo yum install -y stress
+
 #Install apache server
 sudo yum install httpd -y
 sudo systemctl enable httpd
@@ -34,9 +36,11 @@ sudo cp -rvf wordpress/* .
 
 sudo rm -R wordpress
 sudo rm latest.tar.gz
+sudo chown -R apache:apache /var/www/html
+sudo chmod -R 755 /var/www/html
 
 #Wordpress database login
-$DBRootPassword='rootpassword'
+DBRootPassword='rootpassword'
 mysqladmin -u root password $DBRootPassword
 
 # Retrieve RDS endpoint from Terraform output
