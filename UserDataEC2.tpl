@@ -55,10 +55,10 @@ sudo echo "HOST $RDS_ENDPOINT;" >> db.txt
 
 # Copy wp-config.php file to wordpress directory
 sudo cp ./wp-config-sample.php ./wp-config.php
-sudo sed -i "s/'database_name_here'/'$DBName'/g" wp-config.php
-sudo sed -i "s/'username_here'/'$DBUser'/g" wp-config.php
-sudo sed -i "s/'password_here'/'$DBPassword'/g" wp-config.php
-sudo sed -i "s/'localhost'/'$RDS_ENDPOINT'/g" wp-config.php
+sudo sed -i "s/'galleryDB'/'$DBName'/g" wp-config.php
+sudo sed -i "s/'gallerist'/'$DBUser'/g" wp-config.php
+sudo sed -i "s/')n1B6+6S49>'/'$DBPassword'/g" wp-config.php
+sudo sed -i "s/'localhostdata.aws_db_instance.mysql_data.endpoint'/'$RDS_ENDPOINT'/g" wp-config.php
 
 sudo mysql -h "$RDS_ENDPOINT" -u "$DBUser" -p"$DBPassword" "$DBName" -e "SHOW DATABASES;"
 
