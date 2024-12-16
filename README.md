@@ -1,25 +1,42 @@
 THE SP GALLERY
 
 **Project Title and Description**
-Our project name is the SP gallery
+Our project name is the SP art gallery
 
 The goal of this project is to deploy a fault-tolerant, scalable and secure WordPress blog on AWS.
+
+**Overview**
+This project uses Terraform to deploy a scalable WordPress website on AWS. The infrastructure includes EC2 instances in an Auto Scaling Group, an RDS MySQL database, and a load balancer to distribute traffic. The setup ensures high availability, scalability, and secure access using different security layers. 
 
 **Installation Instructions**
 Step-by-step guide on how to set up the project locally.
 Mention any prerequisites (e.g., software, dependencies) and how to install them.
 
 **Usage**
-Show users how to run and use your project.
-Include examples, screenshots, or code snippets if applicable.
+1. Clone the repository
+```
+git clone https://github.com/pelny-bloom/Deham_Pelny.git
+```
+2. Initialize Terraform
+```
+terraform init
+````
+3. Review the Terraform plan
+```
+terrafom plan
+```
+4. Deploy the infrastructure
+```
+terraform apply --auto-approve
+```
+
 
 **Features**
 Highlight the main functionalities or unique aspects of the project.
 Example:
 Terraform Project: WordPress Deployment on AWS
 
-**Overview**
-This project uses Terraform to deploy a scalable WordPress website on AWS. The infrastructure includes EC2 instances in an Auto Scaling Group, an RDS MySQL database, and a load balancer to distribute traffic. The setup ensures high availability, scalability, and secure access using a bastion host.
+
 
 **Architecture**
 
