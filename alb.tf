@@ -54,5 +54,3 @@ resource "aws_autoscaling_attachment" "gallery_auto_alb_attachment" {
   lb_target_group_arn   = aws_lb_target_group.gallery-target-group.arn
   
 }
-
-
