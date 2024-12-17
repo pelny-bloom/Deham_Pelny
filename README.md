@@ -1,71 +1,98 @@
-THE SP GALLERY
+**THE SP GALLERY**
 
 **Project Title and Description**
 Our project name is the SP gallery
 
-The goal of this project is to deploy a fault-tolerant, scalable and secure WordPress blog on AWS.
-
-**Installation Instructions**
-Step-by-step guide on how to set up the project locally.
-Mention any prerequisites (e.g., software, dependencies) and how to install them.
-
-**Usage**
-Show users how to run and use your project.
-Include examples, screenshots, or code snippets if applicable.
-
-**Features**
-Highlight the main functionalities or unique aspects of the project.
-Example:
-Terraform Project: WordPress Deployment on AWS
+The goal of this project is to deploy a fault-tolerant, scalable and secure WordPress blog on AWS using Terraform.
 
 **Overview**
-This project uses Terraform to deploy a scalable WordPress website on AWS. The infrastructure includes EC2 instances in an Auto Scaling Group, an RDS MySQL database, and a load balancer to distribute traffic. The setup ensures high availability, scalability, and secure access using a bastion host.
+This project automates the deplyment of a highly available Wordpress website in AWS.The architecture includes:
+- EC2 instances in an Auto Scaling Group - RDS MySQL database for backend storage
+- Application Load Balancer for traffic distribution
+- VPC with 2 availability zones for high availability
+- security groups for controlled and secure access 
 
 **Architecture**
 
-EC2 Instances:
-Hosts Apache web servers running WordPress, deployed in an Auto Scaling Group for scalability.
-Load Balancer:
-Distributes incoming traffic across the EC2 instances to ensure high availability.
-RDS MySQL Database:
-A managed database in a private subnet, providing secure and reliable storage for WordPress data.
-Bastion Host:
-Acts as a secure entry point to access the EC2 instances in the private subnet.
+**Diagram**
+![](Capstone_Architecture.drawio.png)
 
-**Infrastructure Details**
-VPC:
+**Key Components**
+
+***VPC***:
 Multi-AZ setup with public and private subnets.
-Security Groups:
-Configured to restrict traffic and allow only necessary access.
-Auto Scaling Group:
-Dynamically adjusts the number of EC2 instances based on traffic.
-Load Balancer:
-Routes HTTP/HTTPS traffic to WordPress instances.
-RDS Database:
-MySQL database with appropriate parameter groups and subnet groups.
+
+***Security Groups***:
+Configured to restrict traffic and allow only essential access (SSH, http).
+
+***Auto Scaling Group***:
+Dynamically adjusts the number of EC2 instances dynamically based on traffic.
+
+***Load Balancer***:
+Routes HTTP traffic to EC2 instances to ensure high availability.
+
+***RDS MySQL Database***:
+MySQL database deployed in private subnets for secure backend storage. 
+
+***EC2 Instances***:
+Hosts Wordpress on Apache web servers, ensuring scalability via the Auto Scaling Group. 
+
+**Features**
+
+Here are the main functionalities of our project:
+
+1. Automated Infrastructure Deployment
+- Infrastructure as Code (IaC) using Terraform for versioned deployments. 
+
+2. High availability
+- Resources deployed across two availability zones to ensure fault-tolerance.
+
+3. Auto-Scaling
+- EC2 instances dynamically scale in and out based on application traffic, optimizing performance and costs. 
+
+4. Load Balancing
+- Application Load Balancer distributes incoming traffic to avoid that on server is overloaded. 
+
+5. Secure Deployment
+- Resources are secured using Security Groups and private subnets. 
+
+**Installation Instructions**
 
 **Prerequisites**
-Install Terraform. (hyperlink)
-AWS CLI configured with appropriate IAM permissions.
-SSH key pair for bastion host access.
+Terraform: (https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
+AWS CLI: (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+AWS IAM Configuration: An IAM user with the appropriate permissions
+
+SSH key pair: required for EC2 access.
+
 
 **Usage**
-git clone <repository-url>  
-cd <repository-directory> 
-
-**Initialize Terraform**
+1. Clone the repository
+```
+git clone https://github.com/pelny-bloom/Deham_Pelny.git
+```
+2. Initialize Terraform
+```
 terraform init
-
-**Apply Configuration**
+````
+3. Review the Terraform plan
+```
+terrafom plan
+```
+4. Deploy the infrastructure
+```
 terraform apply --auto-approve
+```
+
 
 **Access the Setup:**
 WordPress:
                 Access via the Load Balancer DNS (output after deployment).
 Database:
                 Connected automatically to WordPress instances.
-Bastion Host:
-                Use the provided SSH key to connect securely.
+
 Notes
 Ensure that your AWS account has sufficient service quotas for EC2, RDS, and other resources.
 Terminate resources using terraform destroy to avoid unnecessary costs.

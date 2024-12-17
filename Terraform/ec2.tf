@@ -29,6 +29,14 @@ resource "aws_instance" "gallery_instance" {
   user_data = data.template_file.UserdataEC2.rendered
 }
 
+# Associate an Elastic IP (EIP) with the instance
+resource "aws_eip" "gallery_instance_eip" {
+  instance = aws_instance.gallery_instance.id
+
+  tags = {
+    Name = "${local.name} Elastic IP"
+  }
+}
 data "template_file" "UserdataEC2" {
   template =  file("${path.module}/UserDataEC2.tpl")
 } 
