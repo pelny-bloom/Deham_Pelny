@@ -38,6 +38,7 @@ sudo rm -R wordpress
 sudo rm latest.tar.gz
 sudo chown -R apache:apache /var/www/html
 sudo chmod -R 755 /var/www/html
+sudo chmod -R 777 /var/www/html/wp-config.php
 
 #Wordpress database login
 DBRootPassword='rootpassword'
@@ -47,7 +48,7 @@ mysqladmin -u root password $DBRootPassword
 $DBName="galleryDB"
 $DBUser="gallerist"
 $DBPassword=")n1B6+6S49>"
-$RDS_ENDPOINT=data.aws_db_instance.mysql_data.endpoint
+$RDS_ENDPOINT=rds-db.cw4x9zqacpvj.us-west-2.rds.amazonaws.com:3306
 
 # Create a temporary file to store the database value
 sudo touch db.txt
