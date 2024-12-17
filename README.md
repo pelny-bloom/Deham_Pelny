@@ -1,7 +1,7 @@
-THE SP GALLERY
+**THE SP GALLERY**
 
 **Project Title and Description**
-Our project name is the SP art gallery
+Our project name is the SP gallery
 
 The goal of this project is to deploy a fault-tolerant, scalable and secure WordPress blog on AWS using Terraform.
 
