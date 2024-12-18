@@ -34,7 +34,7 @@ resource  "aws_autoscaling_group" "gallery_autoscaling_group" {
   name                      = "gallery-asg"
   min_size                  = 1
   max_size                  = 2
-  desired_capacity          = 1
+  desired_capacity          = 2
   vpc_zone_identifier       = [aws_subnet.public_1.id, aws_subnet.public_2.id] #var.private_subnet_cidr_blocks
   target_group_arns         = [aws_lb_target_group.gallery-target-group.arn]
   health_check_type         = "ELB"
