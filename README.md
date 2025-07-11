@@ -7,7 +7,7 @@ Our project name is the SP gallery
 The goal of this project is to deploy a fault-tolerant, scalable and secure WordPress blog on AWS using Terraform.
 
 **Overview**
-This project automates the deplyment of a highly available Wordpress website in AWS.The architecture includes:
+This project automates the deployment of a highly available Wordpress website in AWS.The architecture includes:
 - EC2 instances in an Auto Scaling Group - RDS MySQL database for backend storage
 - Application Load Balancer for traffic distribution
 - VPC with 2 availability zones for high availability
